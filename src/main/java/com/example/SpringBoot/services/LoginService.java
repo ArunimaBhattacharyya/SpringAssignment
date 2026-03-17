@@ -1,5 +1,7 @@
-package com.example.SpringBoot;
+package com.example.SpringBoot.services;
 
+import com.example.SpringBoot.repository.LoginRepository;
+import com.example.SpringBoot.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

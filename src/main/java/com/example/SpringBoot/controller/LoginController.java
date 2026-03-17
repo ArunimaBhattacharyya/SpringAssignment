@@ -1,5 +1,10 @@
-package com.example.SpringBoot;
+package com.example.SpringBoot.controller;
 
+import com.example.SpringBoot.Application;
+import com.example.SpringBoot.entity.Employee;
+import com.example.SpringBoot.services.EmployeeService;
+import com.example.SpringBoot.services.LoginService;
+import com.example.SpringBoot.entity.UserEntity;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 
+import java.util.List;
+
 @Controller
 public class LoginController {
 
@@ -15,6 +22,9 @@ public class LoginController {
 
     @Autowired
     LoginService loginService;
+
+    @Autowired
+    EmployeeService employeeService;
 
     LoginController(Application application){
         this.application = application;
@@ -34,6 +44,8 @@ public class LoginController {
 
         boolean validUser = loginService.validateUser(username, password);
         if(validUser){
+            List<Employee> listOfEmp = employeeService.getAllEmployee();
+            model.addAttribute("listOfEmp", listOfEmp);
             return "home.jsp";
         } else {
             model.addAttribute("error", "Wrong username or password");
