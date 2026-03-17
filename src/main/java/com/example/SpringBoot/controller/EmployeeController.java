@@ -1,5 +1,4 @@
 package com.example.SpringBoot.controller;
-
 import com.example.SpringBoot.Application;
 import com.example.SpringBoot.entity.Employee;
 import com.example.SpringBoot.repository.EmployeeRepository;
@@ -57,8 +56,10 @@ public class EmployeeController {
         employee.setEmpEmail(empEmail);
         employee.setEmpCity(empCity);
         employee.setEmpContactNo(contactNo);
+
         // store employee
         employeeService.storeEmployee(employee);
+
         //get all employee
         List<Employee> listOfEmp = employeeService.getAllEmployee();
         request.setAttribute("listOfEmp", listOfEmp);
