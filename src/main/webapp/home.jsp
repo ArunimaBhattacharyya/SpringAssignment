@@ -35,7 +35,6 @@
     overflow-x: hidden;
   }
 
-  /* Radial glow backdrop */
   body::before {
     content: '';
     position: fixed;
@@ -55,7 +54,6 @@
     grid-template-rows: auto 1fr auto;
   }
 
-  /* Header */
   header {
     padding: 1.6rem 3rem;
     border-bottom: 1px solid var(--border);
@@ -77,7 +75,7 @@
     text-transform: uppercase;
   }
 
-  nav { display: flex; gap: 2.4rem; }
+  nav { display: flex; gap: 2.4rem; align-items: center; }
 
   nav a {
     text-decoration: none;
@@ -101,189 +99,177 @@
   nav a:hover { color: var(--accent-blue); }
   nav a:hover::after { width: 100%; }
 
-  /* Hero */
-  .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 8rem 2rem 6rem;
-    gap: 2rem;
-    animation: fadeUp 1.2s ease both;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .eyebrow {
-    font-size: 0.65rem;
-    letter-spacing: 0.45em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    animation: fadeUp 1.2s 0.1s ease both;
-  }
-
-  h1 {
-    font-weight: 600;
-    font-size: clamp(3rem, 8vw, 6.5rem);
-    line-height: 1.0;
-    letter-spacing: -0.03em;
-    color: var(--text-primary);
-    animation: fadeUp 1.2s 0.2s ease both;
-  }
-
-  h1 strong {
-    color: var(--accent-blue);
-    font-weight: 600;
-  }
-
-  .divider {
-    width: 60px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
-    animation: fadeUp 1.2s 0.35s ease both;
-  }
-
-  .subtitle {
-    max-width: 480px;
-    font-size: 0.88rem;
-    line-height: 1.9;
-    letter-spacing: 0.04em;
-    color: var(--text-muted);
-    animation: fadeUp 1.2s 0.45s ease both;
-  }
-
-  .cta-row {
-    display: flex;
-    gap: 1rem;
-    animation: fadeUp 1.2s 0.6s ease both;
-  }
-
-  .btn {
-    padding: 0.75rem 2.2rem;
+  .btn-add {
+    padding: 0.55rem 1.4rem;
     font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     text-decoration: none;
     cursor: pointer;
     border-radius: 8px;
-    transition: all 0.25s ease;
-  }
-
-  .btn-primary {
     background: linear-gradient(135deg, #1d4ed8, #2563eb);
     color: #fff;
     border: none;
     box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
+    transition: all 0.25s ease;
   }
 
-  .btn-primary:hover {
+  .btn-add:hover {
     box-shadow: 0 4px 24px rgba(37, 99, 235, 0.55);
     opacity: 0.9;
   }
 
-  .btn-ghost {
-    background: transparent;
-    color: var(--text-muted);
-    border: 1px solid var(--border);
-  }
-
-  .btn-ghost:hover {
-    border-color: rgba(50, 110, 230, 0.5);
-    color: var(--accent-blue);
-  }
-
-  /* Scroll hint */
-  .scroll-hint {
+  main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.6rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    animation: fadeUp 1.4s 1s ease both;
+    justify-content: center;
+    padding: 4rem 2rem;
+    animation: fadeUp 0.9s ease both;
   }
 
-  .scroll-hint .line {
-    width: 1px;
-    height: 36px;
-    background: linear-gradient(to bottom, var(--accent-blue), transparent);
-    animation: scrollPulse 2s ease-in-out infinite;
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
-    50%       { opacity: 1;   transform: scaleY(1); }
-  }
-
-  /* Cards */
-  .cards-section {
-    padding: 2rem 3rem 7rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.4rem;
-    max-width: 1100px;
-    margin: 0 auto;
+  .table-wrapper {
     width: 100%;
-    animation: fadeUp 1.2s 0.75s ease both;
-  }
-
-  .card {
+    max-width: 1100px;
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 2.2rem 2rem;
-    position: relative;
     overflow: hidden;
-    transition: border-color 0.35s, box-shadow 0.35s, transform 0.35s;
   }
 
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
-    opacity: 0;
-    transition: opacity 0.35s;
+  .table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 1.6rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(37, 99, 235, 0.05);
   }
 
-  .card:hover {
-    border-color: rgba(37, 99, 235, 0.5);
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(37, 99, 235, 0.07);
-    transform: translateY(-4px);
-  }
-
-  .card:hover::before { opacity: 1; }
-
-  .card-icon {
-    font-size: 1.5rem;
-    margin-bottom: 1.1rem;
-    display: block;
-  }
-
-  .card-title {
-    font-size: 1rem;
+  .table-header h2 {
+    font-size: 0.75rem;
     font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 0.6rem;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin: 0;
   }
 
-  .card-body {
-    font-size: 0.78rem;
-    line-height: 1.8;
+  .table-meta {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
     color: var(--text-muted);
+    text-transform: uppercase;
   }
 
-  /* Footer */
+  table.employee {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+  }
+
+  table.employee thead {
+    background: rgba(37, 99, 235, 0.08);
+  }
+
+  table.employee th {
+    padding: 0.85rem 1.4rem;
+    text-align: left;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  table.employee td {
+    padding: 0.9rem 1.4rem;
+    color: var(--text-primary);
+    font-weight: 300;
+    border-bottom: 1px solid rgba(50, 110, 230, 0.08);
+    white-space: nowrap;
+  }
+
+  table.employee tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  table.employee tbody tr {
+    transition: background 0.2s ease;
+  }
+
+  table.employee tbody tr:hover {
+    background: rgba(37, 99, 235, 0.06);
+  }
+
+  table.employee td:first-child,
+  table.employee th:first-child {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    width: 56px;
+  }
+
+  table.employee td:nth-child(2) {
+    font-family: 'Courier New', monospace;
+    font-size: 0.78rem;
+    color: var(--accent-light);
+  }
+
+  /* ── Per-row action buttons ── */
+  .actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .btn-edit,
+  .btn-delete {
+    display: inline-block;
+    padding: 0.3rem 0.85rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .btn-edit {
+    background: rgba(37, 99, 235, 0.15);
+    color: var(--accent-light);
+    border: 1px solid rgba(37, 99, 235, 0.3);
+  }
+
+  .btn-edit:hover {
+    background: rgba(37, 99, 235, 0.28);
+    border-color: rgba(37, 99, 235, 0.6);
+  }
+
+  .btn-delete {
+    background: rgba(220, 38, 38, 0.1);
+    color: #f87171;
+    border: 1px solid rgba(220, 38, 38, 0.25);
+  }
+
+  .btn-delete:hover {
+    background: rgba(220, 38, 38, 0.22);
+    border-color: rgba(220, 38, 38, 0.5);
+  }
+
   footer {
     border-top: 1px solid var(--border);
     padding: 1.8rem 3rem;
@@ -298,74 +284,77 @@
 
   footer span { color: var(--accent-blue); }
 
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     header { padding: 1.2rem 1.5rem; }
     nav { gap: 1.5rem; }
-    .hero { padding: 5rem 1.5rem 4rem; }
-    .cards-section { padding: 2rem 1.5rem 5rem; }
+    main { padding: 2.5rem 1rem; }
+    .table-wrapper { border-radius: 0; border-left: none; border-right: none; overflow-x: auto; }
+    .table-header { padding: 1rem 1.2rem; }
+    table.employee th,
+    table.employee td { padding: 0.75rem 1rem; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
   }
 </style>
 </head>
 <body>
 
-<a href="addemp"> Add New Employee </a>
 <div class="page-wrapper">
 
   <header>
-    <div class="logo-mark">Home.jsp</div>
+    <div class="logo-mark">Employee DB</div>
     <nav>
       <a href="#">About</a>
       <a href="#">Work</a>
       <a href="#">Contact</a>
+      <a href="/addemp" class="btn-add">+ Add Employee</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <p class="eyebrow">Welcome to your application</p>
-      <h1><strong>Home.jsp</strong></h1>
-      <div class="divider"></div>
-      <p class="subtitle">A refined starting point for your Java web application — elegant, dark, and ready to build upon.</p>
-      <div class="cta-row">
-        <a href="#" class="btn btn-primary">Get Started</a>
-        <a href="#" class="btn btn-ghost">Learn More</a>
+    <div class="table-wrapper">
+      <div class="table-header">
+        <h2>Employees</h2>
+        <span class="table-meta">employees table</span>
       </div>
-      <div class="scroll-hint">
-        <div class="line"></div>
-        Scroll
-      </div>
-    </section>
 
-    <div class="employee-section">
-          <h2 class="section-title">View All Employees</h2>
+      <%
+        List<Employee> listOfEmp = (List<Employee>) request.getAttribute("listOfEmp");
+      %>
 
-          <%
-            List<Employee> listOfEmp = (List<Employee>) request.getAttribute("listOfEmp");
-          %>
-
-          <table class="employee">
-            <tr>
-              <th>Id</th>
-              <th>Emp Id</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Contact No</th>
-              <th>City</th>
-            </tr>
-
-            <% for(Employee emp : listOfEmp) { %>
-            <tr>
-              <td><%= emp.getId() %></td>
-              <td><%= emp.getEmpId() %></td>
-              <td><%= emp.getEmpName() %></td>
-              <td><%= emp.getEmpEmail() %></td>
-              <td><%= emp.getEmpContactNo() %></td>
-              <td><%= emp.getEmpCity() %></td>
-            </tr>
-            <% } %>
-          </table>
-        </div>
+      <table class="employee">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Emp ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Contact No</th>
+            <th>City</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(Employee emp : listOfEmp) { %>
+          <tr>
+            <td><%= emp.getId() %></td>
+            <td><%= emp.getEmpId() %></td>
+            <td><%= emp.getEmpName() %></td>
+            <td><%= emp.getEmpEmail() %></td>
+            <td><%= emp.getEmpContactNo() %></td>
+            <td><%= emp.getEmpCity() %></td>
+            <td>
+              <div class="actions">
+                <a href="/editemp/<%= emp.getId() %>" class="btn-edit">Edit</a>
+                <a href="/deleteemp/<%= emp.getId() %>"
+                   class="btn-delete"
+                   onclick="return confirm('Delete <%= emp.getEmpName() %>?')">Delete</a>
+              </div>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
   </main>
 
   <footer>

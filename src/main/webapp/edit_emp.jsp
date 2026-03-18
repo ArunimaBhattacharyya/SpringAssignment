@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.example.SpringBoot.entity.Employee" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Register Employee</title>
+<title>Edit Employee</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after {
-    margin: 0; padding: 0; box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
 
   :root {
@@ -157,11 +160,10 @@
     animation: fadeUp 0.6s ease both;
   }
 
-  .field:nth-child(1) { animation-delay: 0.05s; }
-  .field:nth-child(2) { animation-delay: 0.10s; }
-  .field:nth-child(3) { animation-delay: 0.15s; }
-  .field:nth-child(4) { animation-delay: 0.20s; }
-  .field:nth-child(5) { animation-delay: 0.25s; }
+  .field:nth-child(2) { animation-delay: 0.05s; }
+  .field:nth-child(3) { animation-delay: 0.10s; }
+  .field:nth-child(4) { animation-delay: 0.15s; }
+  .field:nth-child(5) { animation-delay: 0.20s; }
 
   .field label {
     font-size: 0.68rem;
@@ -184,11 +186,6 @@
     outline: none;
     transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
     -webkit-appearance: none;
-  }
-
-  .field input::placeholder {
-    color: rgba(74, 85, 128, 0.5);
-    font-size: 0.82rem;
   }
 
   .field input:hover {
@@ -225,7 +222,7 @@
     cursor: pointer;
     box-shadow: 0 4px 20px rgba(37, 99, 235, 0.35);
     transition: box-shadow 0.25s, opacity 0.25s, transform 0.15s;
-    animation: fadeUp 0.6s 0.3s ease both;
+    animation: fadeUp 0.6s 0.25s ease both;
   }
 
   .submit-btn:hover {
@@ -263,11 +260,15 @@
 </head>
 <body>
 
+<%
+    Employee emp = (Employee) request.getAttribute("emp");
+%>
+
 <div class="page-wrapper">
 
   <header>
     <div class="logo-mark">Employee DB</div>
-    <a href="home" class="back-link">Back to Dashboard</a>
+    <a href="/allemp" class="back-link">Back to Dashboard</a>
   </header>
 
   <main>
@@ -275,46 +276,43 @@
 
       <div class="form-card-header">
         <p class="form-eyebrow">Human Resources</p>
-        <h1 class="form-title">Register <span>Employee</span></h1>
+        <h1 class="form-title">Edit <span>Employee</span></h1>
       </div>
 
-      <form action="createemp" method="post" class="form-body">
+      <form action="/updateemp" method="post" class="form-body">
 
-        <div class="field">
-          <label for="empId">Employee ID</label>
-          <input type="text" id="empId" name="empId" placeholder="e.g. EMP-001" />
-        </div>
+        <input type="hidden" name="id" value="<%= emp.getId() %>">
 
         <div class="field">
           <label for="empName">Full Name</label>
-          <input type="text" id="empName" name="empName" placeholder="e.g. Jane Smith" />
+          <input type="text" id="empName" name="empName" value="<%= emp.getEmpName() %>" required />
         </div>
 
         <div class="field">
           <label for="empEmail">Email Address</label>
-          <input type="email" id="empEmail" name="empEmail" placeholder="e.g. jane@company.com" />
+          <input type="email" id="empEmail" name="empEmail" value="<%= emp.getEmpEmail() %>" required />
         </div>
 
         <div class="field">
-          <label for="contactNo">Contact Number</label>
-          <input type="tel" id="contactNo" name="contactNo" placeholder="e.g. +91 98765 43210" />
+          <label for="empContactNo">Contact Number</label>
+          <input type="tel" id="empContactNo" name="empContactNo" value="<%= emp.getEmpContactNo() %>" required />
         </div>
 
         <div class="field">
           <label for="empCity">City</label>
-          <input type="text" id="empCity" name="empCity" placeholder="e.g. Kolkata" />
+          <input type="text" id="empCity" name="empCity" value="<%= emp.getEmpCity() %>" />
         </div>
 
         <div class="form-divider"></div>
 
-        <button type="submit" class="submit-btn">Register Employee</button>
+        <button type="submit" class="submit-btn">Update Employee</button>
 
       </form>
     </div>
   </main>
 
   <footer>
-    <div>addemp.jsp &mdash; <span>Java Web Application</span></div>
+    <div>edit_emp.jsp &mdash; <span>Java Web Application</span></div>
     <div>&copy; 2026. All rights reserved.</div>
   </footer>
 

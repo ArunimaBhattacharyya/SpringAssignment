@@ -20,4 +20,24 @@ public class EmployeeService {
     public Employee storeEmployee(Employee emp){
         return employeeRepository.save(emp);
     }
+
+    public Employee updateEmployee(int id, Employee updateEmp){
+        Employee existingEmp = employeeRepository.findById(id).orElseThrow(() -> new RuntimeException("Employee not found"));
+
+        existingEmp.setEmpId(updateEmp.getEmpId());
+        existingEmp.setEmpName(updateEmp.getEmpName());
+        existingEmp.setEmpEmail(updateEmp.getEmpEmail());
+        existingEmp.setEmpContactNo(updateEmp.getEmpContactNo());
+        existingEmp.setEmpCity(updateEmp.getEmpCity());
+
+        return employeeRepository.save(existingEmp);
+    }
+
+    public void deleteEmployee(int id){
+        employeeRepository.deleteById(id);
+    }
+
+    public Employee getEmployeeById(int id){
+        return employeeRepository.findById(id).orElseThrow(() -> new RuntimeException("Employee not found"));
+    }
 }
