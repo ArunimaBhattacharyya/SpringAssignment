@@ -334,23 +334,31 @@
           </tr>
         </thead>
         <tbody>
-          <% for(Employee emp : listOfEmp) { %>
-          <tr>
-            <td><%= emp.getId() %></td>
-            <td><%= emp.getEmpId() %></td>
-            <td><%= emp.getEmpName() %></td>
-            <td><%= emp.getEmpEmail() %></td>
-            <td><%= emp.getEmpContactNo() %></td>
-            <td><%= emp.getEmpCity() %></td>
-            <td>
-              <div class="actions">
-                <a href="/editemp/<%= emp.getId() %>" class="btn-edit">Edit</a>
-                <a href="/deleteemp/<%= emp.getId() %>"
-                   class="btn-delete"
-                   onclick="return confirm('Delete <%= emp.getEmpName() %>?')">Delete</a>
-              </div>
-            </td>
-          </tr>
+          <% if(listOfEmp != null && !listOfEmp.isEmpty()) { %>
+            <% for(Employee emp : listOfEmp) { %>
+            <tr>
+              <td><%= emp.getId() %></td>
+              <td><%= emp.getEmpId() %></td>
+              <td><%= emp.getEmpName() %></td>
+              <td><%= emp.getEmpEmail() %></td>
+              <td><%= emp.getEmpContactNo() %></td>
+              <td><%= emp.getEmpCity() %></td>
+              <td>
+                <div class="actions">
+                  <a href="/editemp/<%= emp.getId() %>" class="btn-edit">Edit</a>
+                  <a href="/deleteemp/<%= emp.getId() %>"
+                     class="btn-delete"
+                     onclick="return confirm('Delete <%= emp.getEmpName() %>?')">Delete</a>
+                </div>
+              </td>
+            </tr>
+            <% } %>
+          <% } else { %>
+            <tr>
+              <td colspan="7" style="text-align:center; padding: 2rem; color: var(--text-muted); font-size: 0.8rem; letter-spacing: 0.1em;">
+                No employees found.
+              </td>
+            </tr>
           <% } %>
         </tbody>
       </table>
