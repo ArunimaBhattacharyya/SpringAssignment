@@ -345,6 +345,7 @@
               <td><%= emp.getEmpCity() %></td>
               <td>
                 <div class="actions">
+                <a href="/viewemp/<%= emp.getId() %>" class="btn-edit">View</a>
                   <a href="/editemp/<%= emp.getId() %>" class="btn-edit">Edit</a>
                   <a href="/deleteemp/<%= emp.getId() %>"
                      class="btn-delete"

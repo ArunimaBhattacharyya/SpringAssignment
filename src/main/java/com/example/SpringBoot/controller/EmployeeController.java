@@ -72,4 +72,11 @@ public class EmployeeController {
         employeeService.deleteEmployee(id);
         return "redirect:/allemp";
     }
+
+    @GetMapping("/viewemp/{id}")
+    public String viewEmployee(@PathVariable int id, HttpServletRequest request){
+        Employee emp = employeeService.getEmployeeById(id);
+        request.setAttribute("emp", emp);
+        return "/view_emp.jsp";
+    }
 }
